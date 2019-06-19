@@ -1,5 +1,7 @@
 # Easy Sport - Proyecto WEB-UTEC-DBP
 
+**IMPORTANTE**: El proyecto está en la siguiente [dirección web](http://18.231.72.26/). En el caso de ejecutarlo desde local, se deberá modificar los ip de los archivos.
+
 ## Integrantes: 
 
 | Integrantes      |  Participación  |
