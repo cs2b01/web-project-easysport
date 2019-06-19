@@ -4,7 +4,7 @@
 En el caso de ejecutarlo desde local, se deberá modificar los ip de los archivos.  
 ### Enlaces
 * [Proyecto en AWS](http://18.231.72.26/)  
-* [Repositorio Original](http://18.231.72.26/)  
+* [Repositorio Original](https://github.com/christianledgard/ProyectoUTEC-DBP)  
 * [Slides](https://docs.google.com/presentation/d/13HeRQHScnKheVnRuCC_zWq1fkHlaUO90Pio2cVHnkM8/edit?usp=sharing)  
 
 
