@@ -1,61 +1,387 @@
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <title>Chat</title>
-    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
-    <script src="/static/js/libs/bootstrap.min.js" ></script>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
+  <script src="{{url_for('static', filename = 'js/app/index.js')}}"></script>
+
+  <title>Easy Sport</title>
+
+  <!-- Custom fonts for this template-->
+  <link href="{{url_for('static', filename = 'vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+  <!-- Custom styles for this template-->
+  <link href="{{url_for('static', filename = 'css/sb-admin-2.min.css')}}" rel="stylesheet">
+
+  <!-- Culqui PAYMENTS-->
+  <script src="https://checkout.culqi.com/js/v3"></script>
+
+
 
 </head>
-<body>
-    <div align="center" width="80%">
-        <div class="alert alert-primary" role="alert">
-          CS2B01 - Platform-Based Development - 2019-I
-        </div>
-        <img src="/static/images/cs.png"/>
-        <div class="alert alert-primary" role="alert">
-            GRUPO
-        </div>
 
-        <div style="width: 60%">
-            <table class="table">
-              <thead>
-                <tr>
-                  <th scope="col">#</th>
-                  <th scope="col">First Name</th>
-                  <th scope="col">Last Name</th>
-                  <th scope="col">Email</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th scope="row">1</th>
-                  <td></td>
-                  <td></td>
-                  <td>@utec.edu.pe</td>
-                </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td></td>
-                  <td></td>
-                  <td>@utec.edu.pe</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td></td>
-                  <td></td>
-                  <td>@utec.edu.pe</td>
-                </tr>
-                <tr>
-                  <th scope="row">4</th>
-                  <td></td>
-                  <td></td>
-                  <td>@utec.edu.pe</td>
-                </tr>
-              </tbody>
-            </table>
+<body id="page-top" onload="refreshPage()">
+
+
+  <!-- Page Wrapper -->
+  <div id="wrapper" style="overflow: hidden">
+
+    <!-- Sidebar -->
+    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+      <!-- Sidebar - Brand -->
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
+        <div class="sidebar-brand-icon rotate-n-15">
+          <i class="fas fa-running"></i>
         </div>
+        <div class="sidebar-brand-text mx-3">Easy Sport</div>
+      </a>
+
+      <!-- Divider -->
+      <hr class="sidebar-divider my-0">
+
+      <!-- Nav Item - Dashboard -->
+      <li class="nav-item active">
+        <a class="nav-link" href="/">
+          <i class="fas fa-fw fa-tachometer-alt"></i>
+          <span>Eventos</span></a>
+      </li>
+
+      <!-- Divider -->
+      <hr class="sidebar-divider">
+
+      <!-- Heading -->
+      <div class="sidebar-heading">
+        Menu
+      </div>
+
+      <!-- Nav Item - Tables -->
+      <li class="nav-item">
+        <a class="nav-link" href="/register">
+          <i class="fas fa-fw fa-user"></i>
+          <span>Crear una cuenta</span></a>
+      </li>
+
+
+      <!-- Nav Item - Charts-->
+
+
+      <li class="nav-item" id="adminAtt1" style="display:none">
+        <a class="nav-link" href="/crud/championship">
+          <i class="fas fa-fw fa-cog"></i>
+          <span>Crear Campeonato</span></a>
+      </li>
+
+      <!-- Nav Item - Pages Collapse Menu -->
+      <li class="nav-item" id="adminAtt2" style="display:none">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
+          <i class="fas fa-fw fa-folder"></i>
+          <span>Ver inscripciones</span>
+        </a>
+        <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Usuarios inscritos en:</h6>
+            <a class="collapse-item" href="/crud/sailing">Vela</a>
+            <a class="collapse-item" href="/crud/soccer">Fútbol</a>
+          </div>
+        </div>
+      </li>
+      <!-- Nav Item - Pages Collapse Menu -->
+      <li class="nav-item" id="adminAtt3" style="display:none">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages2" aria-expanded="true" aria-controls="collapsePages">
+          <i class="fas fa-fw fa-folder"></i>
+          <span>Configuración</span>
+        </a>
+        <div id="collapsePages2" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Administration Tools</h6>
+            <a class="collapse-item" href="/crud/users">Manage Users</a>
+            <a class="collapse-item" href="/crud/notification">Manage Notifications</a>
+            <a class="collapse-item" href="/crud/payments">Manage Payments</a>
+
+          </div>
+        </div>
+      </li>
+
+
+      <!-- Nav Item - Tables -->
+      <li class="nav-item">
+        <a class="nav-link" href="#" data-toggle="modal" data-target="#logoutModal">
+          <i class="fas fa-fw fa-sign-out-alt"></i>
+          <span>Logout</span></a>
+      </li>
+
+      <!-- Sidebar Toggler (Sidebar) -->
+      <div class="text-center d-none d-md-inline">
+        <button class="rounded-circle border-0" id="sidebarToggle"></button>
+      </div>
+
+    </ul>
+    <!-- End of Sidebar -->
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column" style="overflow: hidden">
+
+      <!-- Main Content -->
+      <div id="content" style="overflow: hidden">
+
+        <!-- Topbar -->
+        <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+          <!-- Sidebar Toggle (Topbar) -->
+          <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+            <i class="fa fa-bars"></i>
+          </button>
+
+          <!-- Name -->
+          <div class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100">
+              <h1 class="h3 mb-0 text-gray-800" id="Hello"></h1>
+          </div>
+
+          <!-- Topbar Navbar -->
+          <ul class="navbar-nav ml-auto">
+
+            <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+            <li class="nav-item dropdown no-arrow d-sm-none">
+              <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-search fa-fw"></i>
+              </a>
+              <!-- Dropdown - Messages
+              <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
+                <form class="form-inline mr-auto w-100 navbar-search">
+                  <div class="input-group">
+                    <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                      <button class="btn btn-primary" type="button">
+                        <i class="fas fa-search fa-sm"></i>
+                      </button>
+                    </div>
+                  </div>
+                </form>
+              </div> -->
+            </li>
+
+            <!-- Nav Item - Alerts -->
+            <li class="nav-item dropdown no-arrow mx-1">
+              <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-bell fa-fw"></i>
+                <!-- Counter - Alerts -->
+                <span class="badge badge-danger badge-counter" id="countNotifications"></span>
+              </a>
+              <!-- Dropdown - Alerts -->
+              <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
+                <h6 class="dropdown-header">
+                  Notificaciones
+                </h6>
+                <div id = "notification">
+                </div>
+                <!--<a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>-->
+              </div>
+            </li>
+
+
+
+            <div class="topbar-divider d-none d-sm-block"></div>
+
+
+            <!-- Nav Item - User Information -->
+            <li class="nav-item dropdown no-arrow">
+              <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small" id="Profile"></span>
+                <img class="img-profile rounded-circle" src="/static/img/user.svg">
+              </a>
+            <!-- Dropdown - User Information -->
+            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+              <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                Cerrar sesión
+              </a>
+            </div>
+
+          </ul>
+
+        </nav>
+        <!-- End of Topbar -->
+
+        <!-- Begin Page Content PRINCIPAL PAGE -->
+        <div class="container-fluid" id="principal_page" style="overflow: hidden; display: inline-block">
+
+          <!-- Page Heading -->
+          <!--<div class="d-sm-flex align-items-center justify-content-between mb-4"> -->
+
+            <!--<a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>-->
+          <!--</div> -->
+          <img id ="loader" src="/static/img/loader.gif" style="float: left"></img>
+          <!-- Content Row -->
+          <div id="posts" class="row">
+          </div>
+        <!-- /.container-fluid -->
+          </div>
+      <!-- End of Main Content -->
+
+
+      <!-- Begin Page Content INSCRIPTIONS-->
+        <div class="container-fluid" id="inscriptions" style="display:none">
+
+          <!-- Page Heading -->
+          <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800">Inscripciones</h1>
+            <!--<a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>-->
+          </div>
+
+          <!-- Content Row -->
+          <div class="row">
+
+            <!-- Content Column -->
+            <div>
+              <div class="form-horizontal">
+                <div class="card shadow mb-4">
+                <div class="card-header py-3 ">
+                  <h6 class="m-0 font-weight-bold text-primary" id="titleInscription">Inscripción al Campeonato #####</h6>
+                </div>
+                <div class="card-body">
+                  <fieldset>
+                  <!-- Text input-->
+                  <div class="form-group">
+                    <label class="col-md-4 control-label" for="firstInput"><b id="firstCondition">SEGUN EL TIPO DE CAMPEONATO</b></label>
+                    <div class="col-md-4">
+                    <input id="firstInput" name="firstInput"  type="text" placeholder="Añadir..." class="form-control input-md">
+                    </div>
+                  </div>
+
+                  <!-- Select Basic -->
+                  <div class="form-group">
+                    <label class="col-md-4 control-label" for="secondInput"><b id="secondCondition">SEGUN EL TIPO DE CAMPEONATO</b></label>
+                    <div class="col-md-4">
+                      <select id="secondInput" name="secondInput" class="form-control" >
+                        <option value="">-Seleccionar-</option>
+                      </select>
+                    </div>
+                  </div>
+
+
+                  <!-- Multiple Checkboxes (inline) -->
+                  <div class="form-group">
+                    <label class="col-md-12 control-label" ><b>Términos y Condiciones</b></label>
+                    <div class="col-md-12">
+                      <label class="checkbox-inline" for="TerminosyCondiciones-0">
+                        <input type="checkbox" name="TerminosyCondiciones" id="TerminosyCondiciones-0" value="1">
+                        Acepto los términos y condiciones expresados por Easy Sport
+                      </label>
+                    </div>
+                  </div>
+
+                  <!-- Button (Double) -->
+                  <div class="form-group" align="right">
+                    <label class="col-md-4 control-label" for="insOK"></label>
+                    <div class="col-md-8">
+                      <button id="insOK" name="insOK" class="btn btn-success" onclick="ok_inscription">Realizar la Inscripción</button>
+                      <button id="insCANCELAR" name="insCANCELAR" class="btn btn-danger" onclick="cancel_inscription()">Cancelar</button>
+                    </div>
+                  </div>
+
+                  </fieldset>
+
+              </div>
+
+
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+        <!-- /.container-fluid -->
+
+
+      <!-- Footer -->
+      <footer class="sticky-footer bg-white" style="display:none" id="footer">
+        <div class="container my-auto">
+          <div class="copyright text-center my-auto">
+            <span>Copyright &copy; Easy Sport 2019</span>
+          </div>
+        </div>
+      </footer>
+      <!-- End of Footer -->
 
     </div>
+    <!-- End of Content Wrapper -->
+
+  </div>
+  <!-- End of Page Wrapper -->
+
+  <!-- Scroll to Top Button-->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
+
+  <!-- Logout Modal-->
+  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Desea cerrar la sesión?</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">Seleccione "Logout" si desea cerrar y terminar su sesión.</div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+          <a class="btn btn-primary" href="/logout">Logout</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Inscription Realizada Correctamente-->
+  <div class="modal fade" id="inscriptionOkModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">¡Inscripción Realizada!</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">La inscripción se ha realizado correctamente. 😁 </div>
+        <div class="modal-footer">
+          <button class="btn btn-primary" href="/" type="button" data-dismiss="modal">OK</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Bootstrap core JavaScript-->
+
+  <script src="{{url_for('static', filename = 'vendor/jquery/jquery.min.js')}}"></script>
+  <script src="{{url_for('static', filename = 'vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+
+  <!-- Core plugin JavaScript-->
+  <script src="{{url_for('static', filename = 'vendor/jquery-easing/jquery.easing.min.js')}}"></script>
+
+  <!-- Custom scripts for all pages-->
+  <script src="{{url_for('static', filename = 'js/sb-admin-2.min.js')}}"></script>
+
+  <!-- Page level plugins -->
+  <script src="{{url_for('static', filename = 'vendor/chart.js/Chart.min.js')}}"></script>
+
+  <!-- Page level custom scripts -->
+  <script src="{{url_for('static', filename = 'js/demo/chart-area-demo.js')}}"></script>
+  <script src="{{url_for('static', filename = 'js/demo/chart-pie-demo.js')}}"></script>
+
 </body>
+
 </html>
