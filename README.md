@@ -1,8 +1,14 @@
 # Easy Sport - Proyecto WEB-UTEC-DBP
 
-**IMPORTANTE**: El proyecto está en la siguiente [dirección web](http://18.231.72.26/). En el caso de ejecutarlo desde local, se deberá modificar los ip de los archivos.
+## Información importante  
+En el caso de ejecutarlo desde local, se deberá modificar los ip de los archivos.  
+### Enlaces
+* [Proyecto en AWS](http://18.231.72.26/)  
+* [Repositorio Original](http://18.231.72.26/)  
+* [Slides](https://docs.google.com/presentation/d/13HeRQHScnKheVnRuCC_zWq1fkHlaUO90Pio2cVHnkM8/edit?usp=sharing)  
 
-## Integrantes: 
+
+## Integrantes  
 
 | Integrantes      |  Participación  |
 |------------------|-----------------|
@@ -12,7 +18,7 @@
 |Juan Galvez       |   20%           |
   
     
- ## Instrucciones de uso :
+ ## Instrucciones de uso 
  ### Usuario Regular
  1. Ingresar a la [applicación](http://18.231.72.26/) desde tu navegador de preferencia.
  2. Si usted está registrado, deberá ingresar su correo electrónico y contraseña. De lo contrario, podrá crearse una cuenta haciendo click en "[¡Crear una cuenta!](http://18.231.72.26/register)".
