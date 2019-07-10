@@ -1,5 +1,5 @@
 $(function(){
-    var url = "http://18.231.72.26/championship";
+    var url = "http://18.228.148.139/championship";
     var lookupData = [
     { id: "sailing", show: "sailing" },
     { id: "soccer", show: "soccer" }];

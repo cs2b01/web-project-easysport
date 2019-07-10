@@ -1,5 +1,5 @@
 $(function(){
-    var url = "http://18.231.72.26/notifications";
+    var url = "http://18.228.148.139/notifications";
     var lookupData = [
     { id: "OK", show: "OK" },
     { id: "WARNING", show: "WARNING" },];

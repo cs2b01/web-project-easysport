@@ -160,6 +160,29 @@ def authenticate():
         message = {'message': 'Unauthorized'}
         return Response(message, status=401, mimetype='application/json')
 
+@app.route('/mobile/authenticate', methods = ["POST"])
+def authenticateMobile():
+    message = json.loads(request.data)
+    email = message['email']
+    password = message['password']
+    #2. look in database
+    db_session = db.getSession(engine)
+    try:
+        user = db_session.query(entities.Users).filter(entities.Users.email == email).one()
+        session['logged_user']=user.id
+        if check_password_hash(user.password, password):
+            message = {'message': 'Authorized', 'user_id':user.id, 'email':user.email}
+            message = json.dumps(message, cls=connector.AlchemyEncoder)
+            return Response(message, status=200, mimetype='application/json')
+        else:
+            message = {'message': 'Unauthorized'}
+            message = json.dumps(message, cls=connector.AlchemyEncoder)
+            return Response(message, status=401, mimetype='application/json')
+    except Exception:
+        message = {'message': 'Unauthorized'}
+        message = json.dumps(message, cls=connector.AlchemyEncoder)
+        return Response(message, status=401, mimetype='application/json')
+
 #current
 @app.route('/current', methods = ['GET'])
 def current_user():
@@ -217,6 +240,17 @@ def get_users():
     for user in dbResponse:
         data.append(user)
     return Response(json.dumps(data, cls=connector.AlchemyEncoder), mimetype='application/json')
+
+@app.route('/mobile/users', methods = ['GET'])
+def get_usersMobile():
+    session = db.getSession(engine)
+    dbResponse = session.query(entities.Users)
+    data = []
+    for user in dbResponse:
+        data.append(user)
+    message = {'data' : data}
+    return Response(json.dumps(message, cls=connector.AlchemyEncoder), mimetype='application/json')
+
 
 @app.route('/users', methods = ['POST'])
 def post_users():
@@ -324,6 +358,16 @@ def get_championship():
         data.append(championship)
     return Response(json.dumps(data, cls=connector.AlchemyEncoder), mimetype='application/json')
 
+@app.route('/mobile/championship', methods = ['GET'])
+def get_championshipMobile():
+    session = db.getSession(engine)
+    dbResponse = session.query(entities.Championship)
+    data = []
+    for championship in dbResponse:
+        data.append(championship)
+    message = {'data':data}
+    return Response(json.dumps(message, cls=connector.AlchemyEncoder), mimetype='application/json')
+
 #update championship
 @app.route('/championship', methods = ['PUT'])
 def update_championship():
@@ -365,6 +409,8 @@ def post_sailing():
     session.add(inscription)
     session.commit()
     return 'Created Sailing Inscription'
+
+
 
 #read sailing
 @app.route('/sailing', methods = ['GET'])
@@ -462,6 +508,25 @@ def delete_soccer():
 #Sailing
 @app.route('/loadSailData', methods = ["POST"])
 def load_sail():
+    message = json.loads(request.data)
+    try:
+        data = entities.InscriptionSailing(
+        sailingNumber=message['sailingNumber'],
+        category=message['category'],
+        user_id=message['user_id'],
+        championship_id=message['championship_id']
+        )
+        session = db.getSession(engine)
+        session.add(data)
+        session.commit()
+        message = {'message': 'User Created'}
+        return Response(message, status=200, mimetype='application/json')
+    except Exception:
+        message = {'message': 'Error'}
+        return Response(message, status=401, mimetype='application/json')
+
+@app.route('/mobile/loadSailData', methods = ["POST"])
+def load_sailMobile():
     message = json.loads(request.data)
     try:
         data = entities.InscriptionSailing(
@@ -627,4 +692,4 @@ def inscripcion():
 
 if __name__ == '__main__':
     application.debug = True
-    application.run(host='127.0.0.1', debug=True)
+    application.run()

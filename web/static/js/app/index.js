@@ -268,11 +268,11 @@ function paymentsPOST(token) {
         dataType: 'json',
         success: function (response) {
             alert("Su inscripción y el pago se han realizado con éxito.");
-            window.location.href = "http://18.231.72.26/";
+            window.location.href = "http://18.228.148.139/";
         },
         error: function (response) {
             alert(JSON.stringify(response));
-            window.location.href = "http://18.231.72.26/";
+            window.location.href = "http://18.228.148.139/";
 
           }
         });

@@ -1,7 +1,7 @@
 $(function(){
-    var url = "http://18.231.72.26/sailing";
-    var urlUsers = "http://18.231.72.26/users";
-    var urlChampionship = "http://18.231.72.26/championship";
+    var url = "http://18.228.148.139/sailing";
+    var urlUsers = "http://18.228.148.139/users";
+    var urlChampionship = "http://18.228.148.139/championship";
 
 
     $("#grid").dxDataGrid({
